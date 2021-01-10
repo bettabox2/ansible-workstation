@@ -1,0 +1,11 @@
+- name: Add chrome repo
+  apt_repository:
+    repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
+    filename: google-chrome.list
+  notify: apt_update
+
+- name: Add vscode repo
+  apt_repository:
+    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
+  when: ansible_distribution in ["Debian", "Pop!_OS"]
+  notify: apt_update

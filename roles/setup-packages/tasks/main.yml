@@ -1,7 +1,7 @@
 ---
 # tasks file for desktop
-- import_tasks: repos.yml
-  when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+#- import_tasks: repos.yml
+#  when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
 
 - import_tasks: software_setup.yml
 

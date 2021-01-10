@@ -11,7 +11,6 @@
       - traceroute
       - wget
       - zsh
-      - google-chrome-stable
       - python3-pip
       - ansible
       - dconf
@@ -37,8 +36,11 @@
       
 - name: Install vscode Ubuntu
   snap:
-    name: code
+    name: {{ item }}
     classic: yes
+  with_items:
+  - code
+  - google-chrome
   when: ansible_distribution == "Ubuntu"
 
 - name: Install vscode Debian-like
@@ -56,3 +58,4 @@
     name: skype
     classic: yes
   when: ansible_distribution == "Ubuntu"
+

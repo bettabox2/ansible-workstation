@@ -36,11 +36,14 @@
       
 - name: Install vscode Ubuntu
   snap:
-    name: {{ item }}
+    name: "code"
     classic: yes
-  with_items:
-  - "code"
-  - "google-chrome"
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install google-chrome Ubuntu
+  snap:
+    name: "google-chrome"    
+    classic: yes
   when: ansible_distribution == "Ubuntu"
 
 - name: Install vscode Debian-like

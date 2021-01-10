@@ -14,7 +14,7 @@
 
 - name: Copy rsyslog.conf
   copy:
-    src: rsyslog-50-defautl.conf
+    src: "rsyslog-50-default.conf"
     dest: "/etc/rsyslog.d/50-default-conf"
     backup: true
   notify: Restart rsyslog

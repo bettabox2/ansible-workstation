@@ -19,7 +19,7 @@
       - docker
       - docker.io
 #      - docker-engine
-      - postgresql-clinet
+      - postgresql-client
       - network-manager-l2tp
       - network-manager-l2tp-gnome
       - s3cmd

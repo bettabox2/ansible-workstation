@@ -39,8 +39,8 @@
     name: {{ item }}
     classic: yes
   with_items:
-  - code
-  - google-chrome
+  - "code"
+  - "google-chrome"
   when: ansible_distribution == "Ubuntu"
 
 - name: Install vscode Debian-like

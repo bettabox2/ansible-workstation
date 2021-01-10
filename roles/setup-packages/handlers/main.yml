@@ -1,0 +1,11 @@
+---
+# handlers file for desktop
+- name: apt_update
+  apt:
+    update_cache: true
+
+- name: Restart rsyslog
+  systemd:
+    name: rsyslog
+    enabled: true
+    state: restarted

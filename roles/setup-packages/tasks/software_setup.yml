@@ -13,7 +13,7 @@
       - zsh
       - python3-pip
       - ansible
-      - dconf
+      - dconf-cli
       - telegram-desktop
       - virtualbox
       - docker

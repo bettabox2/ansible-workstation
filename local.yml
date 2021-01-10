@@ -1,8 +1,9 @@
 ---
-- hosts: all
+- hosts: localhost
   become: true
   roles:
     - setup-packages
 
-- roles:
+- hosts: localhost
+  roles:
     - workstation

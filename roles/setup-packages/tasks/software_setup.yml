@@ -1,0 +1,58 @@
+- name: Install software
+  package:
+    state: latest
+    name:
+      - curl
+      - htop
+      - iotop
+      - net-tools
+      - nmap
+      - rsync
+      - traceroute
+      - wget
+      - zsh
+      - google-chrome-stable
+      - python3-pip
+      - ansible
+      - dconf
+      - telegram-desktop
+      - virtualbox
+      - docker
+      - docker.io
+      - docker-engine
+      - postgresql-clinet
+      - network-manager-l2tp
+      - network-manager-l2tp-gnome
+      - s3cmd
+      - python3-virtualenv
+      - golang
+      - git
+      - rsyslog
+      - openssh-server
+      - gnome-terminal
+      - ffmpeg
+      - ffmpegthumbnailer
+      - gstreamer1.0-plugins-base
+      - virtualbox-guest-utils
+      
+- name: Install vscode Ubuntu
+  snap:
+    name: code
+    classic: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install vscode Debian-like
+  apt:
+    name: code
+  when: ansible_distribution in ["Debian", "Pop!_OS"]
+
+- name: Install vscode Fedora
+  dnf:
+    name: code
+  when: ansible_distribution == "Fedora"
+
+- name: Install skype for Ubuntu
+  snap:
+    name: skype
+    classic: yes
+  when: ansible_distribution == "Ubuntu"

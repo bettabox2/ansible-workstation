@@ -1,0 +1,67 @@
+- name: gnome | appearance | set dconf
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+  with_items:
+  - {key: 'org/gnome/desktop/interface/gtk-im-module', value: "'gtk-im-context-simple'"}
+  - {key: 'org/gnome/desktop/interface/gtk-theme', value: "'gtk-im-context-simple'"}
+  - {key: 'org/gnome/desktop/privacy/report-technical-problems', value: "false"}
+  - {key: 'org/gnome/shell/app-picker-view', value: "uint32 1"}
+  - {key: 'org/gnome/shell/favorite-apps', value: "['google-chrome.desktop', 'org.gnome.Terminal.desktop', 'telegramdesktop.desktop', 'code_code.desktop', 'org.gnome.Nautilus.desktop', 'snap-store_ubuntu-software.desktop', 'org.gnome.Evince.desktop', 'org.remmina.Remmina.desktop', 'skypeforlinux.desktop', 'virtualbox.desktop']"}
+  - {key: 'org/gnome/shell/extensions/dash-to-dock/dash-max-icon-siz', value: "42"}
+  - {key: 'org/gnome/desktop/wm/keybindings/close', value: "['<Super>q']"}
+
+- name: gnome | keybindings | set keybindings for switching between workspaces
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value}}"
+  with_items:
+     - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-down", value: "['<Super>Page_Down']" }
+     - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-up", value: "['<Super>Page_Up']" }
+
+- name: gnome | keybindings | set key binding for moving windows to other workspaces
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value}}"
+  with_items:
+      - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-down", value: "['<Shift><Super>Page_Down']" }
+      - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-up", value: "['<Shift><Super>Page_Up']" }
+
+- name: gnome | nautilus | enable tree-view in nautilus
+  dconf:
+    key: "/org/gnome/nautilus/list-view/use-tree-view"
+    value: "true"
+
+- name: gnome | nautilus | set list view in nautilus
+  dconf:
+    key: "/org/gnome/nautilus/preferences/default-folder-viewer"
+    value: "'list-view'"
+
+- name: gnome | nautilus | enable option to permanently delete files
+  dconf:
+    key: "/org/gnome/nautilus/preferences/show-delete-permanently"
+    value: "'true'"
+
+- name: configure gnome-terminal
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value}}"
+  with_items:
+     - { key: "/org/gnome/terminal/legacy/mnemonics-enabled", value: "false" }
+     - { key: "org/gnome/terminal/legacy/profiles:/default", value: "'b1dcc9dd-5262-4d8d-a863-c897e6d979b9'" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-color", value: "'rgb(13,33,38)'" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/background-transparency-percent", value: "1" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/custom-command", value: "'/bin/zsh'" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/audible-bell", value: "false" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/bold-color-same-as-fg", value: "true" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/bold-is-bright", value: "true" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/cursor-colors-set", value: "false" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/foreground-color", value: "'rgb(205,250,255)'" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/highlight-colors-set", value: "false" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-custom-command", value: "true" }
+     - { key: "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/use-theme-colors", value: "false" }
+    
+- name: gnome | shell settings | show-battery-percentage
+  dconf:
+    key: "/org/gnome/desktop/interface/show-battery-percentage"
+    value: "true"

@@ -1,2 +1,3 @@
 ---
 # tasks file for workstation
+- include_tasks: ubuntu/ubuntu_env.yml

@@ -19,6 +19,7 @@
       - docker
       - docker.io
 #      - docker-engine
+      - google-chrome-stable
       - postgresql-client
       - network-manager-l2tp
       - network-manager-l2tp-gnome
@@ -40,11 +41,11 @@
     classic: yes
   when: ansible_distribution == "Ubuntu"
 
-- name: Install google-chrome Ubuntu
-  snap:
-    name: "google-chrome"    
-    classic: yes
-  when: ansible_distribution == "Ubuntu"
+#- name: Install google-chrome Ubuntu
+#  snap:
+#    name: "google-chrome"    
+#    classic: yes
+#  when: ansible_distribution == "Ubuntu"
 
 - name: Install vscode Debian-like
   apt:

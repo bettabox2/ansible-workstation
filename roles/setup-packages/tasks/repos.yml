@@ -1,11 +1,21 @@
-- name: Add chrome repo
+- name: software | google-chrome | add repository key
+  apt_key:
+    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+  when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+
+- name: software | google-chrome | add repository
   apt_repository:
     repo: "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
-    filename: google-chrome.list
-  notify: apt_update
+    filename: google-chrome
+  register: chrome_repo
 
-- name: Add vscode repo
-  apt_repository:
-    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
-  when: ansible_distribution in ["Debian", "Pop!_OS"]
-  notify: apt_update
+#- name: software | vscode | add repository key
+#  apt_key:
+#    url: https://dl-ssl.google.com/linux/linux_signing_key.pub
+#  when: ansible_distribution in ["Debian", "Pop!_OS", "Ubuntu"]
+
+#- name: Add vscode repo
+#  apt_repository:
+#    repo: "deb [arch=amd64] https://packages.microsoft.com/repos/code stable main"
+#  when: ansible_distribution in ["Debian", "Pop!_OS"]
+#  notify: apt_update
